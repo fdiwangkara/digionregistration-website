@@ -1,0 +1,156 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Orbitron', monospace;
+
+    --color-cyber-dark: #012325;
+    --color-cyber-darker: #010f10;
+    --color-cyber-blue: #025273;
+    --color-neon-cyan: #05F3DB;
+    --color-neon-pink: #D8048D;
+    --color-neon-magenta: #F105CB;
+}
+
+/* ===== Base Styles ===== */
+body {
+    background-color: var(--color-cyber-dark);
+    color: #fff;
+    font-family: var(--font-sans);
+}
+
+/* ===== Animated Cyber Grid ===== */
+.cyber-grid {
+    position: relative;
+    overflow: hidden;
+}
+.cyber-grid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(5, 243, 219, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(5, 243, 219, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridScroll 20s linear infinite;
+    pointer-events: none;
+}
+@keyframes gridScroll {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(60px); }
+}
+
+/* ===== Glassmorphism ===== */
+.glass-card {
+    background: rgba(1, 35, 37, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(5, 243, 219, 0.08);
+}
+
+/* ===== Borders ===== */
+.border-neon {
+    border: 1px solid rgba(5, 243, 219, 0.12);
+}
+.border-neon-hover:hover {
+    border-color: rgba(5, 243, 219, 0.35);
+    box-shadow: 0 0 15px rgba(5, 243, 219, 0.06);
+}
+
+/* ===== Buttons ===== */
+.btn-primary {
+    background: linear-gradient(135deg, rgba(5, 243, 219, 0.15), rgba(5, 243, 219, 0.05));
+    border: 1px solid rgba(5, 243, 219, 0.3);
+    color: #05F3DB;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, rgba(5, 243, 219, 0.25), rgba(5, 243, 219, 0.1));
+    border-color: rgba(5, 243, 219, 0.5);
+    box-shadow: 0 0 20px rgba(5, 243, 219, 0.1);
+}
+.btn-outline {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.btn-outline:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.8);
+}
+.btn-pink {
+    background: linear-gradient(135deg, rgba(216, 4, 141, 0.2), rgba(241, 5, 203, 0.1));
+    border: 1px solid rgba(216, 4, 141, 0.3);
+    color: #F105CB;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.btn-pink:hover {
+    background: linear-gradient(135deg, rgba(216, 4, 141, 0.35), rgba(241, 5, 203, 0.15));
+    border-color: rgba(216, 4, 141, 0.5);
+}
+
+/* ===== Section Divider ===== */
+.section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(5, 243, 219, 0.15), transparent);
+}
+
+/* ===== Heading Accent ===== */
+.heading-accent::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, #05F3DB, transparent);
+    margin-top: 8px;
+}
+
+/* ===== Table Responsive ===== */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(5, 243, 219, 0.15); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(5, 243, 219, 0.3); }
+
+/* ===== Glow Animation ===== */
+@keyframes glow {
+    0% { box-shadow: 0 0 5px rgba(5, 243, 219, 0.2); }
+    100% { box-shadow: 0 0 20px rgba(5, 243, 219, 0.4); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ===== Custom form styles ===== */
+input:focus, select:focus, textarea:focus {
+    outline: none;
+}
+
+/* Pagination override for dark theme */
+.pagination-dark nav span,
+.pagination-dark nav a {
+    background: rgba(255,255,255,0.03) !important;
+    border-color: rgba(255,255,255,0.1) !important;
+    color: rgba(255,255,255,0.4) !important;
+}
+.pagination-dark nav span[aria-current] {
+    background: rgba(5, 243, 219, 0.1) !important;
+    border-color: rgba(5, 243, 219, 0.2) !important;
+    color: #05F3DB !important;
+}
